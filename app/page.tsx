@@ -1,4 +1,7 @@
 import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button"
+import {Card , CardContent, CardHeader ,CardTitle} from "@/components/ui/card"
 
 
 export default function Home() {
@@ -45,110 +48,87 @@ export default function Home() {
     
 
       {/* Offers Section */}
-      <section className="py-16 px-4 md:px-8">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
-            Création Images Ads
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* 1er Package */}
-            <div className="bg-white border-2 border-gray-200 rounded-lg p-8 text-center hover:border-blue-500 transition duration-300">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">1er Package</h3>
-              <div className="text-3xl font-bold text-blue-600 mb-4">350€</div>
-              <ul className="text-left text-gray-600 mb-6 space-y-2">
-                <li>• Création de 10 images ads</li>
-                <li>• Format optimisé</li>
-                <li>• Support email</li>
-              </ul>
-              <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
-                Choisir
-              </button>
-            </div>
+     <section className="py-20 px-4 md:px-8 bg-muted/40">
+      <div className="max-w-6xl mx-auto">
 
-            {/* 2nd Package */}
-            <div className="bg-white border-2 border-blue-500 rounded-lg p-8 text-center transform scale-105 shadow-xl">
-              <div className="bg-blue-500 text-white px-4 py-1 rounded-full text-sm mb-4 inline-block">
-                Populaire
-              </div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">2nd Package</h3>
-              <div className="text-3xl font-bold text-blue-600 mb-4">500€/mois</div>
-              <ul className="text-left text-gray-600 mb-6 space-y-2">
-                <li>• Création illimitée d'images</li>
-                <li>• Formats multiples</li>
-                <li>• Support prioritaire</li>
-                <li>• Optimisation mensuelle</li>
-              </ul>
-              <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
-                Choisir
-              </button>
-            </div>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
+          Ads Image Creation
+        </h2>
 
-            {/* 3ime Package */}
-            <div className="bg-white border-2 border-gray-200 rounded-lg p-8 text-center hover:border-blue-500 transition duration-300">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">3ime Package</h3>
-              <div className="text-3xl font-bold text-blue-600 mb-4">1000€/mois</div>
-              <ul className="text-left text-gray-600 mb-6 space-y-2">
-                <li>• Service premium complet</li>
-                <li>• Création illimitée</li>
-                <li>• Support 24/7</li>
-                <li>• Stratégie personnalisée</li>
-                <li>• Rapports mensuels</li>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+          {/* Starter */}
+          <Card className="rounded-2xl shadow-sm hover:shadow-lg transition">
+            <CardHeader className="text-center">
+              <CardTitle>Starter Pack</CardTitle>
+              <p className="text-3xl font-bold mt-2">350€</p>
+            </CardHeader>
+
+            <CardContent className="space-y-4">
+              <ul className="text-sm text-muted-foreground space-y-2">
+                <li>✔ 10 ad images creation</li>
+                <li>✔ Optimized formats</li>
+                <li>✔ Email support</li>
               </ul>
-              <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition duration-300">
-                Choisir
-              </button>
-            </div>
-          </div>
+
+              <Button className="w-full rounded-xl">
+                Choose Plan
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Popular */}
+          <Card className="rounded-2xl border-primary shadow-lg scale-105">
+            <CardHeader className="text-center">
+              <Badge className="mx-auto mb-2">Most Popular</Badge>
+              <CardTitle>Growth Pack</CardTitle>
+              <p className="text-3xl font-bold mt-2">500€/month</p>
+            </CardHeader>
+
+            <CardContent className="space-y-4">
+              <ul className="text-sm text-muted-foreground space-y-2">
+                <li>✔ Unlimited ad images</li>
+                <li>✔ Multiple formats</li>
+                <li>✔ Priority support</li>
+                <li>✔ Monthly optimization</li>
+              </ul>
+
+              <Button className="w-full rounded-xl">
+                Choose Plan
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Pro */}
+          <Card className="rounded-2xl shadow-sm hover:shadow-lg transition">
+            <CardHeader className="text-center">
+              <CardTitle>Pro Pack</CardTitle>
+              <p className="text-3xl font-bold mt-2">1000€/month</p>
+            </CardHeader>
+
+            <CardContent className="space-y-4">
+              <ul className="text-sm text-muted-foreground space-y-2">
+                <li>✔ Full premium service</li>
+                <li>✔ Unlimited creation</li>
+                <li>✔ 24/7 support</li>
+                <li>✔ Custom strategy</li>
+                <li>✔ Monthly reports</li>
+              </ul>
+
+              <Button className="w-full rounded-xl">
+                Choose Plan
+              </Button>
+            </CardContent>
+          </Card>
+
         </div>
-      </section>
-        {/* Products Section */}
-
-{/*         
-      <section className="py-16 px-4 md:px-8 bg-gray-50">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
-            Nos Produits
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            Product 1 
-          <div className="bg-white rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
-              <img
-                src="/camera.png"
-                alt="Produit 1"
-                className="w-full h-48 object-contain mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Caméra de Surveillance</h3>
-              <p className="text-gray-600 mb-4">Haute qualité et performance</p>
-            </div>
-
-             Product 2 
-            <div className="bg-white rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
-              <img
-                src="/smartwatch.png"
-                alt="Produit 2"
-                className="w-full h-48 object-contain mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Montre Connectée</h3>
-              <p className="text-gray-600 mb-4">Technologie et style</p>
-            </div>
-
-             Product 3 *
-            <div className="bg-white rounded-lg shadow-lg p-6 transform hover:scale-105 transition duration-300">
-              <img
-                src="/massage_gun.png"
-                alt="Produit 3"
-                className="w-full h-48 object-contain mb-4"
-              />
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Pistolet de Massage</h3>
-              <p className="text-gray-600 mb-4">Détente et récupération</p>
-            </div>
-          </div>
-        </div>
-      </section> */}
+      </div>
+    </section>
+  
 
       {/* WhatsApp CTA */}
-      <section className="bg-green-500 text-white py-12 px-4 md:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="bg-green-500 text-white py-12 ">
+        <div className="w-full text-center">
           <h2 className="text-3xl font-bold mb-4">Contactez-nous via WhatsApp!</h2>
           <p className="text-xl mb-6">Discutez avec notre équipe pour trouver la solution parfaite</p>
           <a
