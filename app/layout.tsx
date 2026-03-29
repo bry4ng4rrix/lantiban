@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "lantiban",
   description: "Cree par Bryan garrix",
+  icons: {
+    icon: "/logo.avif",
+  },
 };
 
 export default function RootLayout({
