@@ -80,7 +80,7 @@ export default function Home() {
 
 
   return (
-    <main className="min-h-screen w-full h-full bg-white">
+    <div className="min-h-screen w-full h-full bg-white">
       {/* Hero Section */}
       <section className="relative  py-20 ">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
@@ -363,6 +363,6 @@ export default function Home() {
 
       {/* Footer */}
       
-    </main>
+    </div>
   );
 }
