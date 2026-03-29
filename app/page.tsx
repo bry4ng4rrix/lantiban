@@ -38,14 +38,11 @@ export default function Home() {
     };
 
     const sendToWhatsApp = () => {
-        const message = `🛒 *New Order Details*\n\n` +
+        const message = `new order details :\n\n` +
             cartItems.map((item, index) => 
-                `*${index + 1}. ${item.title}*\n` +
-                `   • Badge: ${item.badge}\n` +
-                `   • Price: £${item.price}\n`
-            ).join('\n') +
-            `\n*Total: £${getTotalPrice()}*\n\n` +
-            `Please continue with your order via WhatsApp! 🚀`;
+                `type : ${item.title}\n` +
+                `price : ${item.price}\n`
+            ).join('\n');
         
         const whatsappUrl = `https://wa.me/33623126517?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
@@ -230,7 +227,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold mb-4">Contact us via WhatsApp!</h2>
           <p className="text-xl mb-6">Chat with our team to find the perfect solution</p>
           <a
-            href="https://wa.me/XXXXXXXX"
+            href="https://wa.me/33623126517"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center bg-white text-green-700 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-green-50 transition duration-300"
@@ -294,7 +291,7 @@ export default function Home() {
               {cartItems.map((item, index) => (
                 <Card key={index} className="p-4 hover:shadow-md transition-shadow duration-200 group">
                   <div className="flex items-start gap-3">
-                    <div className="flex-shrink-0 w-14 h-14 rounded-lg bg-muted flex items-center justify-center">
+                    <div className="shrink-0 w-14 h-14 rounded-lg bg-muted flex items-center justify-center">
                       <div className="w-6 h-6 rounded bg-primary/30"></div>
                     </div>
                     <div className="flex-1 min-w-0">
@@ -305,7 +302,7 @@ export default function Home() {
                         </Badge>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 flex-shrink-0">
+                    <div className="flex items-center gap-2 shrink-0">
                       <span className="font-bold text-lg text-foreground">£{item.price}</span>
                       <Button
                         variant="ghost"
