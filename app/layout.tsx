@@ -5,7 +5,7 @@ import Footer from "@/components/footer";
 
 export const metadata: Metadata = {
   title: "lantiban",
-  description: "Cree par Bryan garrix",
+  description: "pour florian",
   icons: {
     icon: "/logo.avif",
   },
