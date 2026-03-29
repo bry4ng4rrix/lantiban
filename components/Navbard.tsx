@@ -50,21 +50,21 @@ export default function Navbar() {
             <div className="flex flex-col gap-2">
               <Link
                 href="/"
-                className="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-md transition-all"
+                className="block px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 rounded-md transition-all"
                 onClick={() => setIsOpen(false)}
               >
                 Home
               </Link>
               <Link
                 href="/legal"
-                className="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-md transition-all"
+                className="block px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 rounded-md transition-all"
                 onClick={() => setIsOpen(false)}
               >
                 Legal Notice
               </Link>
               <Link
                 href="/terms"
-                className="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-md transition-all "
+                className="block px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-100 rounded-md transition-all "
                 onClick={() => setIsOpen(false)}
               >
                 Terms of Service
