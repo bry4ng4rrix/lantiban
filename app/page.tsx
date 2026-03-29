@@ -89,14 +89,14 @@ export default function Home() {
             <Image
               src="/bm.webp"
               alt="Caméra de surveillance"
-              className="absolute top-0 right-0 w-48 md:w-64 lg:w-80 -mt-10 md:-mt-20 transform rotate-6 hover:scale-105 transition-all duration-300"
+              className="absolute top-0 right-0 w-48 md:w-64 lg:w-80 -mt-10 md:-mt-20 transform rotate-6 hover:scale-105 transition-all duration-300 animate-floatY"
               width={300}
               height={300}
             />
              <Image
               src="/google.webp"
               alt="Montre connectée"
-              className="absolute bottom-0 left-0 w-32 md:w-48 lg:w-60 -mb-10 md:-mb-20 transform -rotate-6 hover:scale-105 transition-all duration-300"
+              className="absolute bottom-0 left-0 w-32 md:w-48 lg:w-60 -mb-10 md:-mb-20 transform -rotate-6 hover:scale-105 transition-all duration-300 animate-floatY"
               width={300}
               height={300}
             /> 
