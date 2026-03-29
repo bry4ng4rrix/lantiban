@@ -3,6 +3,7 @@
 import * as React from "react"
 import { X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Button } from "./button"
 
 interface DialogProps {
   open?: boolean
@@ -28,14 +29,14 @@ const DialogTrigger = React.forwardRef<
   React.ButtonHTMLAttributes<HTMLButtonElement> & { open?: boolean; onOpenChange?: (open: boolean) => void }
 >(({ className, children, open, onOpenChange, ...props }, ref) => {
   return (
-    <button
+    <Button
       ref={ref}
       className={cn("", className)}
       onClick={() => onOpenChange?.(!open)}
       {...props}
     >
       {children}
-    </button>
+    </Button>
   )
 })
 DialogTrigger.displayName = "DialogTrigger"

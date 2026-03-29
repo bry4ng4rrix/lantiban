@@ -2,16 +2,16 @@
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button"
-import { Card , CardContent, CardFooter, CardHeader ,CardTitle} from "@/components/ui/card"
+import { Card , CardContent, CardFooter} from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { cn } from "@/lib/utils";
-import { ArrowDown, Link, ShoppingCart, Star, X } from "lucide-react";
+import { ArrowDown,ArrowRight,ShoppingCart, Star, X ,Trash2} from "lucide-react";
 import { useState } from "react";
+import { Separator } from "@/components/ui/separator";
 
 interface PackItem {
     title: string;
     image: string;
-    price: number;
+    price: string;
     badge: string;
     color: string;
     star: number;
@@ -31,7 +31,10 @@ export default function Home() {
     };
 
     const getTotalPrice = () => {
-        return cartItems.reduce((total: number, item: PackItem) => total + item.price, 0);
+        return cartItems.reduce((total: number, item: PackItem) => {
+            const price = item.price.replace(/[^\d]/g, '');
+            return total + parseInt(price, 10);
+        }, 0);
     };
 
     const pack = [
@@ -125,7 +128,7 @@ export default function Home() {
                 <div className='relative w-full h-48 bg-muted overflow-hidden'>
                   <img
                     // src={produit.image || "/placeholder.svg"}
-                    src={`https://picsum.photos/seed/${Math.random()}/400/300`}
+                    src={i.image}
                     
                     className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
                   />
@@ -223,66 +226,123 @@ export default function Home() {
 
       {/* Floating Cart */}
       {cartItems.length > 0 && (
-        <Dialog open={isCartOpen} onOpenChange={setIsCartOpen}>
-          <DialogTrigger asChild>
-            <div className="fixed bottom-6 right-6 z-50">
-              <Button
-                size="lg"
-                className="bg-blue-600 text-white rounded-full w-16 h-16 shadow-lg hover:bg-blue-700 transition-all duration-300 hover:scale-110"
-              >
-                <ShoppingCart size={24} />
-                {cartItems.length > 0 && (
-                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">
-                    {cartItems.length}
-                  </span>
-                )}
-              </Button>
+          <Dialog open={isCartOpen} onOpenChange={setIsCartOpen}>
+      <DialogTrigger asChild>
+        <Button
+          size="lg"
+          className="fixed bottom-6 right-6 z-50 h-16 w-16 rounded-full bg-primary text-primary-foreground shadow-xl hover:opacity-90 transition-all duration-300 hover:scale-110 flex items-center justify-center"
+        >
+          <ShoppingCart size={24} />
+          {cartItems.length > 0 && (
+            <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center bg-destructive text-destructive-foreground animate-pulse">
+              {cartItems.length}
+            </Badge>
+          )}
+        </Button>
+      </DialogTrigger>
+      <DialogContent className="w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col">
+        <DialogHeader className="pb-4">
+          <div className="flex  items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-secondary rounded-lg">
+                <ShoppingCart className="w-5 h-5 text-secondary-foreground" />
+              </div>
+              <DialogTitle className="text-2xl font-bold">Shopping Cart</DialogTitle>
             </div>
-          </DialogTrigger>
-          <DialogContent className="sm:max-w-md max-h-[80vh] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle className="text-2xl font-bold text-gray-900">Shopping Cart</DialogTitle>
-            </DialogHeader>
-            
-            <div className="flex-1 overflow-y-auto py-4">
-              {cartItems.length === 0 ? (
-                <p className="text-gray-500 text-center">Your cart is empty</p>
-              ) : (
-                <div className="space-y-4">
-                  {cartItems.map((item, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-gray-900">{item.title}</h3>
-                        <p className="text-gray-600">£{item.price}</p>
-                        <Badge className={`rounded-full bg-${item.color} mt-2`}>{item.badge}</Badge>
+            {cartItems.length > 0 && (
+              <Badge variant="secondary">
+                {cartItems.length} item{cartItems.length !== 1 ? 's' : ''}
+              </Badge>
+            )}
+          </div>
+        </DialogHeader>
+
+        <Separator className="my-2" />
+
+        <div className="flex-1 overflow-y-auto">
+          {cartItems.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-12 px-4">
+              <div className="p-4 bg-muted rounded-full mb-4">
+                <ShoppingCart className="w-10 h-10 text-muted-foreground" />
+              </div>
+              <p className="text-lg font-semibold mb-2">Your cart is empty</p>
+              <p className="text-sm text-muted-foreground text-center">
+                Add items to your cart to see them here
+              </p>
+            </div>
+          ) : (
+            <div className="space-y-3 px-6">
+              {cartItems.map((item, index) => (
+                <Card key={index} className="p-4 hover:shadow-md transition-shadow duration-200 group">
+                  <div className="flex items-start gap-3">
+                    <div className="flex-shrink-0 w-14 h-14 rounded-lg bg-muted flex items-center justify-center">
+                      <div className="w-6 h-6 rounded bg-primary/30"></div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="font-semibold text-foreground truncate">{item.title}</h4>
+                      <div className="flex items-center gap-2 mt-2">
+                        <Badge variant="outline" className="text-xs">
+                          {item.badge}
+                        </Badge>
                       </div>
+                    </div>
+                    <div className="flex items-center gap-2 flex-shrink-0">
+                      <span className="font-bold text-lg text-foreground">£{item.price}</span>
                       <Button
                         variant="ghost"
                         size="sm"
                         onClick={() => removeFromCart(index)}
-                        className="p-2 hover:bg-red-100 rounded-full text-red-500"
+                        className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive opacity-0 group-hover:opacity-100 transition-opacity"
                       >
-                        <X size={16} />
+                        <Trash2 size={16} />
                       </Button>
                     </div>
-                  ))}
-                </div>
-              )}
+                  </div>
+                </Card>
+              ))}
             </div>
-            
-            {cartItems.length > 0 && (
-              <div className="border-t border-gray-200 pt-4">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xl font-bold text-gray-900">Total:</span>
-                  <span className="text-2xl font-bold text-blue-600">£{getTotalPrice()}</span>
+          )}
+        </div>
+
+        {cartItems.length > 0 && (
+          <>
+            <Separator className="my-4" />
+            <div className="px-6 pb-6 space-y-4">
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">Subtotal</span>
+                  <span className="text-sm font-semibold">£{getTotalPrice()}</span>
                 </div>
-                <Button className="w-full bg-blue-600 text-white hover:bg-blue-700 py-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-muted-foreground">Shipping</span>
+                  <Badge variant="secondary" className="text-xs">Free</Badge>
+                </div>
+              </div>
+              <Separator />
+              <div className="flex items-center justify-between">
+                <span className="font-semibold">Total</span>
+                <span className="text-2xl font-bold">£{getTotalPrice()}</span>
+              </div>
+
+              <div className="space-y-2 pt-2">
+                <Button className="w-full" size="lg">
                   Proceed to Checkout
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                  onClick={() => setIsCartOpen(false)}
+                >
+                  Continue Shopping
                 </Button>
               </div>
-            )}
-          </DialogContent>
-        </Dialog>
+            </div>
+          </>
+        )}
+      </DialogContent>
+    </Dialog>
       )}
 
       {/* Footer */}
