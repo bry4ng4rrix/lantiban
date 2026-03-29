@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button"
 import {Card , CardContent, CardFooter, CardHeader ,CardTitle} from "@/components/ui/card"
 import { cn } from "@/lib/utils";
-import { Link, ShoppingCart, Star } from "lucide-react";
+import { ArrowDown, Link, ShoppingCart, Star } from "lucide-react";
 
 
 export default function Home() {
@@ -15,7 +15,7 @@ export default function Home() {
              image: "image",
              price: 350,
              badge: "Popular",
-             color: 'blue',
+             color: 'primary',
              star: 3
          },
         
@@ -24,7 +24,7 @@ export default function Home() {
              image: "image",
              price: 1000,
              badge: "Best Value",
-             color: 'green',
+             color: 'green-500',
              star: 5
          },
         {
@@ -32,7 +32,7 @@ export default function Home() {
             image: "image",
             price: 500,
             badge: "Professional",
-            color: 'yellow',
+            color: 'primary',
             star: 4
         },
     ]
@@ -54,7 +54,7 @@ export default function Home() {
             <Button 
             size="lg"
             className="rounded-lg"
-            >Get Started</Button>
+            >Get Started <ArrowDown/> </Button>
           </div>
           <div className="md:w-1/2 flex justify-center md:justify-end relative">
             {/* Products images */}
@@ -93,7 +93,8 @@ export default function Home() {
         {pack.map((i, index) => ( 
             <Card
                 key={index}
-                className='group rounded-lg overflow-hidden border-border shadow-lg hover:border-sky-500 hover:shadow-xl transition-all duration-300 bg-card/50 backdrop-blur-sm hover:bg-card'
+                className='group rounded-lg overflow-hidden border-border shadow-lg 
+                hover:border-sky-500 hover:shadow-xl transition-all duration-300 bg-card/70 hover:scale-105 backdrop-blur-sm hover:bg-card'
               >
                 {/* Image Container */}
                 <div className='relative w-full h-48 bg-muted overflow-hidden'>
@@ -105,7 +106,7 @@ export default function Home() {
                   />
                   <div className='absolute top-3 right-3'>
                     <Badge
-                    className={`rounded-full bg-${i.color}-500`}
+                    className={`rounded-full bg-${i.color}`}
                     >{i.badge}</Badge>
                   </div>
                 </div>
@@ -152,7 +153,8 @@ export default function Home() {
                   <Button
                     size="lg"
                    
-                    className={`bg-${i.color}-500 text-primary-foreground rounded hover:bg-${i.color}-800 gap-2 
+                    className={`bg-${i.color} text-primary-foreground rounded hover:bg-${i.color} gap-2  hover:scale-105 hover:shadow-2xl
+                    translation-all duration-300
                    
                     shadow-lg `}
                   >
