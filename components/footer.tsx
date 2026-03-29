@@ -15,8 +15,7 @@ export default function Footer() {
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Contact</h4>
                         <ul className="space-y-2 text-gray-400">
-                            <li>Email: contact@lantiban.com</li>
-                            <li>Phone: +33 XXX XXX XXX</li>
+                            <li>Email: contact@lantiban.fr</li>
                         </ul>
                     </div>
                     <div>

@@ -37,6 +37,21 @@ export default function Home() {
         }, 0);
     };
 
+    const sendToWhatsApp = () => {
+        const message = `🛒 *New Order Details*\n\n` +
+            cartItems.map((item, index) => 
+                `*${index + 1}. ${item.title}*\n` +
+                `   • Badge: ${item.badge}\n` +
+                `   • Price: £${item.price}\n`
+            ).join('\n') +
+            `\n*Total: £${getTotalPrice()}*\n\n` +
+            `Please continue with your order via WhatsApp! 🚀`;
+        
+        const whatsappUrl = `https://wa.me/33623126517?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+        setIsCartOpen(false);
+    };
+
     const pack = [
         {
              title: "Starter",
@@ -82,7 +97,7 @@ export default function Home() {
             <Button 
             size="lg"
             className="rounded-lg"
-            >Get Started <ArrowDown/> </Button>
+            >Get Started <ArrowDown className=""/> </Button>
           </div>
           <div className="md:w-1/2 flex justify-center md:justify-end relative">
             {/* Products images */}
@@ -132,6 +147,10 @@ export default function Home() {
                     
                     className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
                   />
+                  <Button className="w-full bg-blue-600 text-white hover:bg-blue-700 py-4 text-lg font-semibold rounded-xl transition-all duration-200 hover:shadow-lg flex items-center justify-center gap-2" onClick={sendToWhatsApp}>
+                    <ShoppingCart className="w-5 h-5" />
+                    Send Order via WhatsApp
+                  </Button>
                   <div className='absolute top-3 right-3'>
                     <Badge
                     className={`rounded-full bg-${i.color}`}
@@ -173,7 +192,7 @@ export default function Home() {
                 <CardFooter className='flex items-center justify-between pt-4 border-t border-border'>
                   <div>
                     <p className='text-2xl font-bold text-stone-800'>
-                      £ {i.price}
+                       €{i.price}
                     </p>
                    
                   </div>
@@ -325,9 +344,9 @@ export default function Home() {
               </div>
 
               <div className="space-y-2 pt-2">
-                <Button className="w-full" size="lg">
-                  Proceed to Checkout
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                <Button className="w-full bg-blue-600 text-white hover:bg-blue-700 py-4 text-lg font-semibold rounded-xl transition-all duration-200 hover:shadow-lg flex items-center justify-center gap-2" size="lg" onClick={sendToWhatsApp}>
+                  <ShoppingCart className="w-5 h-5" />
+                  Send Order via WhatsApp
                 </Button>
                 <Button
                   variant="outline"
