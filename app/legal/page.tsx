@@ -23,19 +23,9 @@ export default function LegalPage() {
             </div>
           </section>
 
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Website Information</h2>
-            <p className="text-slate-700 mb-4">
-              <strong>URL:</strong> <a href="https://www.lantiban.fr" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:text-blue-700">www.lantiban.fr</a>
-            </p>
-          </section>
+          
 
-          <section className="mb-12">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Hosting Provider</h2>
-            <p className="text-slate-700">
-              This website is hosted by <strong>LWS (Ligne Web Services)</strong>, a leading web hosting provider.
-            </p>
-          </section>
+         
 
           <section className="mb-12">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Website Purpose</h2>
