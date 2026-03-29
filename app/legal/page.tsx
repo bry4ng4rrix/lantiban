@@ -7,7 +7,7 @@ export default function LegalPage() {
   return (
     <main className="min-h-screen h-full bg-white">
 
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
 
         <article className="prose prose-slate max-w-none">

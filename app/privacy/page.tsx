@@ -7,7 +7,7 @@ export default function PrivacyPage() {
   return (
     <main className="min-h-screen h-full bg-white">
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-16">
       
         <article className="prose prose-slate max-w-none">
           <h1 className="text-4xl font-bold text-slate-900 mb-2">Privacy Policy</h1>

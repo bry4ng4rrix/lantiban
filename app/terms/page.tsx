@@ -8,7 +8,7 @@ export default function TermsPage() {
     <main className="min-h-screen h-full bg-white">
     
 
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-16">
       
 
         <article className="prose prose-slate max-w-none">
