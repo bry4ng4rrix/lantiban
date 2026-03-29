@@ -80,7 +80,7 @@ export default function Home() {
     
 
       {/* Offers Section */}
-     <section className="mt-3 py-20 px-4 md:px-8 bg-gray-300">
+     <section className="mt-3 py-20 px-4 md:px-8 bg-linear-to-b  via-sky-100 to-green-500">
       <div className="max-w-6xl mx-auto">
 
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-900">
