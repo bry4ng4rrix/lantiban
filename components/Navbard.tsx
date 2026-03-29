@@ -20,6 +20,9 @@ export default function Navbar() {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
+            <Link href="/" className="text-sm font-medium hover:font-bold text-slate-700 hover:text-slate-950 transition-all hover:scale-105  duration-300 hover:underline hover:underline-offset-4">
+              Home
+            </Link>
             <Link href="/legal" className="text-sm font-medium hover:font-bold text-slate-700 hover:text-slate-950 transition-all hover:scale-105  duration-300 hover:underline hover:underline-offset-4">
               Legal Notice
             </Link>
@@ -45,6 +48,13 @@ export default function Navbar() {
         {isOpen && (
           <div className="md:hidden pb-4 pt-2 border-t border-slate-200">
             <div className="flex flex-col gap-2">
+              <Link
+                href="/"
+                className="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-md transition-all"
+                onClick={() => setIsOpen(false)}
+              >
+                Home
+              </Link>
               <Link
                 href="/legal"
                 className="block px-4 py-2 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-md transition-all"

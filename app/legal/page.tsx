@@ -1,11 +1,8 @@
 'use client';
 
-import { ArrowLeft } from 'lucide-react';
-import Link from 'next/link';
-
 export default function LegalPage() {
   return (
-    <main className="min-h-screen h-full bg-white">
+    <main className="min-h-screen h-full bg-linear-to-b from-white via-sky-50 to-sky-100">
 
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
