@@ -352,10 +352,10 @@ const pack: PackItem[] = [
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" variant="secondary" className="rounded-lg font-semibold">
-              Get Started Now
+              <a href="#produit">Get Started Now</a>
             </Button>
             <Button size="lg" variant="outline" className="rounded-lg font-semibold border-primary-foreground/20 hover:bg-primary-foreground/10">
-              Schedule a Call
+              <a href="#contact">Schedule a Call</a>
             </Button>
           </div>
         </div>
