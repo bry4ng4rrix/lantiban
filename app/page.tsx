@@ -310,7 +310,7 @@ const pack: PackItem[] = [
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         
       {Chose.map((i, index) => (
         <Card key={index} className="space-y-2 shadow-md border border-dashed">
@@ -318,7 +318,7 @@ const pack: PackItem[] = [
             <CardTitle className="text-center text-4xl">{i.emoji}</CardTitle>
            
           </CardHeader>
-          <CardContent className="h-20 space-y-2">
+          <CardContent className="h-24 space-y-2">
              <div className="flex justify-between items-center">
               <h1 className="font-bold text-md">{i.titre}</h1> <Badge className="bg-green-400 text-white"> {i.badge}</Badge>
              </div>
@@ -403,122 +403,140 @@ const pack: PackItem[] = [
 
       {/* Floating Cart */}
       {cartItems.length > 0 && (
-          <Dialog open={isCartOpen} onOpenChange={setIsCartOpen}>
-      <DialogTrigger asChild>
-        <Button
-          size="lg"
-          className="fixed bottom-8 right-8 z-50 h-14 w-14 rounded-full bg-green-500 text-background shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center"
-        >
-          <ShoppingCart size={20} />
-          {cartItems.length > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center 
-              bg-destructive text-destructive-foreground animate-pulse font-semibold text-xs">
-              {cartItems.length}
-            </Badge>
-          )}
-        </Button>
-      </DialogTrigger>
-      <DialogContent className="w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col border border-border">
-        <DialogHeader className="pb-4">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-accent/10 rounded-lg">
-                <ShoppingCart className="w-5 h-5 text-accent" />
-              </div>
-              <DialogTitle className="text-2xl font-bold text-foreground">Shopping Cart</DialogTitle>
-            </div>
-            {cartItems.length > 0 && (
-              <Badge className="bg-accent text-accent-foreground">
-                {cartItems.length} item{cartItems.length !== 1 ? 's' : ''}
-              </Badge>
-            )}
-          </div>
-        </DialogHeader>
-
-        <Separator className="my-2" />
-
-        <div className="flex-1 overflow-y-auto">
-          {cartItems.length === 0 ? (
-            <div className="flex flex-col items-center justify-center py-12 px-4">
-              <div className="p-4 bg-muted rounded-full mb-4">
-                <ShoppingCart className="w-10 h-10 text-muted-foreground" />
-              </div>
-              <p className="text-lg font-semibold mb-2">Your cart is empty</p>
-              <p className="text-sm text-muted-foreground text-center">
-                Add items to your cart to see them here
-              </p>
-            </div>
-          ) : (
-            <div className="space-y-3 px-6">
-              {cartItems.map((item, index) => (
-                <Card key={index} className="p-4 border border-border hover:shadow-sm transition-all duration-200 group bg-card">
-                  <div className="flex items-start gap-3">
-                    <div className="shrink-0 w-14 h-14 rounded-lg bg-muted/50 flex items-center justify-center">
-                      <div className="w-6 h-6 rounded bg-accent/20"></div>
+            <Dialog open={isCartOpen} onOpenChange={setIsCartOpen}>
+            <DialogTrigger asChild>
+              <Button
+                size="lg"
+                className="fixed bottom-8 right-8 z-50 h-14 w-14 rounded-full bg-gradient-to-br from-amber-400 to-amber-500 text-slate-950 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center font-bold"
+              >
+                <ShoppingCart size={20} />
+                {cartItems.length > 0 && (
+                  <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center bg-red-500 text-white animate-pulse font-bold text-xs">
+                    {cartItems.length}
+                  </Badge>
+                )}
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col border-2 border-amber-400 bg-gradient-to-br from-slate-900 to-blue-950 shadow-2xl shadow-amber-400/20">
+              <DialogHeader className="pb-4 border-b border-amber-400/30">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-amber-400/20 rounded-lg border border-amber-400/30">
+                      <ShoppingCart className="w-5 h-5 text-amber-400" />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="font-semibold text-foreground truncate">{item.title}</h4>
-                      <div className="flex items-center gap-2 mt-2">
-                        
+                    <DialogTitle className="text-2xl font-bold text-white">
+                      Your Cart
+                    </DialogTitle>
+                  </div>
+                  {cartItems.length > 0 && (
+                    <Badge className="bg-amber-400 text-slate-950 font-bold">
+                      {cartItems.length} item{cartItems.length !== 1 ? 's' : ''}
+                    </Badge>
+                  )}
+                </div>
+              </DialogHeader>
+
+              <div className="flex-1 overflow-y-auto">
+                {cartItems.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-12 px-4">
+                    <div className="p-4 bg-slate-800/50 rounded-full mb-4 border border-slate-700">
+                      <ShoppingCart className="w-10 h-10 text-slate-500" />
+                    </div>
+                    <p className="text-lg font-semibold mb-2 text-white">
+                      Your cart is empty
+                    </p>
+                    <p className="text-sm text-slate-400 text-center">
+                      Add items to your cart to see them here
+                    </p>
+                  </div>
+                ) : (
+                  <div className="space-y-3 px-6 py-4">
+                    {cartItems.map((item, index) => (
+                      <Card
+                        key={index}
+                        className="p-4 border border-blue-500/50 hover:border-amber-400/50 transition-all duration-200 group bg-gradient-to-br from-blue-950/60 to-slate-900/60 hover:shadow-lg hover:shadow-amber-400/10"
+                      >
+                        <div className="flex items-start gap-3">
+                          <div className="shrink-0 w-12 h-12 rounded-lg bg-amber-400/20 flex items-center justify-center border border-amber-400/30 text-xl">
+                            {item.image}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-bold text-white truncate">
+                              {item.title}
+                            </h4>
+                            <p className="text-xs text-slate-400 mt-1">
+                              {item.type}
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-2 shrink-0">
+                            <span className="font-bold text-lg text-amber-400">
+                              €{item.price}
+                            </span>
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={() => removeFromCart(index)}
+                              className="h-8 w-8 p-0 text-slate-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-opacity"
+                            >
+                              <Trash2 size={16} />
+                            </Button>
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {cartItems.length > 0 && (
+                <>
+                  <Separator className="my-4 bg-amber-400/20" />
+                  <div className="px-6 pb-6 space-y-4">
+                    <div className="space-y-2 bg-blue-950/40 rounded-lg p-4 border border-blue-400/30">
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-slate-300">Subtotal</span>
+                        <span className="text-sm font-semibold text-white">
+                          €{getTotalPrice()}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm text-slate-300">Shipping</span>
+                        <Badge className="text-xs bg-green-500/20 text-green-300 border border-green-400/30">
+                          Free
+                        </Badge>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 shrink-0">
-                      <span className="font-bold text-lg text-foreground">€{item.price}</span>
+                    <Separator className="bg-amber-400/20" />
+                    <div className="flex items-center justify-between pt-2">
+                      <span className="font-bold text-white">Total</span>
+                      <span className="text-3xl font-bold text-amber-400">
+                        €{getTotalPrice()}
+                      </span>
+                    </div>
+
+                    <div className="space-y-2 pt-4">
                       <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => removeFromCart(index)}
-                        className="h-8 w-8 p-0 text-muted-foreground hover:text-destructive opacity-0 group-hover:opacity-100 transition-opacity"
+                        className="w-full bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 hover:shadow-lg hover:shadow-amber-400/50 py-6 text-lg font-bold rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                        size="lg"
+                        onClick={sendToWhatsApp}
                       >
-                        <Trash2 size={16} />
+                        <ShoppingCart className="w-5 h-5" />
+                        Send Order via WhatsApp
+                      </Button>
+                      <Button
+                        variant="outline"
+                        className="w-full rounded-lg font-bold border-blue-400/30 text-white hover:bg-blue-950/50"
+                        size="lg"
+                        onClick={() => setIsCartOpen(false)}
+                      >
+                        Continue Shopping
                       </Button>
                     </div>
                   </div>
-                </Card>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {cartItems.length > 0 && (
-          <>
-            <Separator className="my-4" />
-            <div className="px-6 pb-6 space-y-4">
-              <div className="space-y-2 bg-muted/50 rounded-lg p-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Subtotal</span>
-                  <span className="text-sm font-semibold text-foreground">€{getTotalPrice()}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-sm text-muted-foreground">Shipping</span>
-                  <Badge className="text-xs bg-accent/10 text-accent">Free</Badge>
-                </div>
-              </div>
-              <Separator />
-              <div className="flex items-center justify-between pt-2">
-                <span className="font-semibold text-foreground">Total</span>
-                <span className="text-3xl font-bold text-accent">€{getTotalPrice()}</span>
-              </div>
-
-              <div className="space-y-2 pt-2">
-                <Button className="w-full bg-accent text-accent-foreground hover:opacity-90 py-4 text-lg font-semibold rounded-lg transition-all duration-200 hover:shadow-lg flex items-center justify-center gap-2" size="lg" onClick={sendToWhatsApp}>
-                  <ShoppingCart className="w-5 h-5" />
-                  Send Order via WhatsApp
-                </Button>
-                <Button
-                  variant="outline"
-                  className="w-full rounded-lg font-semibold"
-                  size="lg"
-                  onClick={() => setIsCartOpen(false)}
-                >
-                  Continue Shopping
-                </Button>
-              </div>
-            </div>
-          </>
-        )}
-      </DialogContent>
-    </Dialog>
+                </>
+              )}
+            </DialogContent>
+          </Dialog>
       )}
 
       {/* Footer */}
