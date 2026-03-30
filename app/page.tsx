@@ -98,7 +98,7 @@ const pack: PackItem[] = [
         titre : "100% Ban-Proof & Platform Compliant",
         badge : "Safe Ads",
         emoji : "🛡️",
-        descri : "ired of Meta or TikTok rejecting your ads? We know the algorithms and the rulebooks inside out. Our designs strictly respect all advertising policies and terms of service. 0 risk of blockages, 100% peace of mind." ,
+        descri : "Tired of Meta or TikTok rejecting your ads? We know the algorithms and the rulebooks inside out. Our designs strictly respect all advertising policies and terms of service. 0 risk of blockages, 100% peace of mind." ,
       },
         {      
         titre : "Ultimate Flexibility (Cancel Anytime)",
@@ -176,7 +176,7 @@ const pack: PackItem[] = [
             Ad Image Creation
           </h2>
           <p className="text-center text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the creative firepower you need. Pause or cancel whenever you want. No contracts, no headaches—just results.
+          Choose the creative firepower you need. Pause or cancel whenever you want. No contracts, no headaches—just results.
           </p>
         </div>
 
@@ -278,14 +278,28 @@ const pack: PackItem[] = [
         </div>
 
         {/* Marketing Content */}
-        <div className="mb-20 mt-16 border-t border-border pt-16">
+        <div className="  border-t border-border pt-16">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 text-foreground text-balance">
-            Dominate Your Market with High-Converting Ad Creatives
+          hoose Your Growth Plan
+Select the monthly subscription that fits your scaling goals. No hidden fees. Cancel anytime.
+
           </h2>
           <p className="text-lg text-muted-foreground text-center mb-8 max-w-3xl mx-auto leading-relaxed">
             Stop wasting ad spend on visuals that get ignored—or worse, get your accounts banned. At Lantiban, we design premium, scroll-stopping static ads engineered to scale your business and crush your CPA.
           </p>
         </div>
+         <div className="w-full px-4 md:px-8 py-12">
+      <div className="max-w-6xl mx-auto">
+        <Image
+          src="/second.jpg"
+          alt="Portfolio showcase"
+          className="w-full h-64 md:h-96 object-fit rounded-2xl shadow-lg"
+          width={1200}
+          height={600}
+        />
+      </div>
+    </div>
+
 
         {/* Why Choose Section */}
         <div className="">
@@ -296,7 +310,8 @@ const pack: PackItem[] = [
         </Badge>
 
         <h3 className="text-4xl md:text-5xl font-bold text-balance">
-          Why Choose Lantiban?
+        
+🚀 Why Choose Lantiban? The Unfair Advantage
         </h3>
 
         <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -313,17 +328,15 @@ const pack: PackItem[] = [
             <CardTitle className="text-center text-4xl">{i.emoji}</CardTitle>
            
           </CardHeader>
-          <CardContent className="h-36 space-y-2">
+          <CardContent className=" space-y-2">
              <div className="flex justify-between items-center">
               <h1 className="font-bold text-md">{i.titre}</h1> <Badge className="bg-green-400 text-white"> {i.badge}</Badge>
              </div>
-           <CardDescription>
+           <CardDescription className="text-lg">
             {i.descri}
            </CardDescription>
           </CardContent>
-          <CardFooter className="justify-center">
-            <Button className="hover:scale-105 shadow-md hover:shadow-md"><a href="#contact">Learn more</a></Button>
-          </CardFooter>
+          
         </Card>
        
       ))}
@@ -356,18 +369,7 @@ const pack: PackItem[] = [
         </div>
       </div>
     </section>
-    <div className="w-full px-4 md:px-8 py-12">
-      <div className="max-w-6xl mx-auto">
-        <Image
-          src="/second.jpg"
-          alt="Portfolio showcase"
-          className="w-full h-64 md:h-96 object-fit rounded-2xl shadow-lg"
-          width={1200}
-          height={600}
-        />
-      </div>
-    </div>
-
+   
       {/* WhatsApp CTA */}
       <section className="py-16 px-4 md:px-8 " id="contact">
         <div className="max-w-3xl mx-auto">
