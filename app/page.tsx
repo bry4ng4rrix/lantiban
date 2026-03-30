@@ -221,7 +221,7 @@ const pack: PackItem[] = [
                   </div>
 
                   {/* Price Section */}
-                  <div className="mb-8 text-center">
+                  <div className="mb-2 text-center">
                     <div className="flex items-baseline justify-center gap-1">
                       <span className="text-slate-300">€</span>
                       <span className="text-5xl font-bold text-amber-400">
@@ -230,7 +230,9 @@ const pack: PackItem[] = [
                       <span className="text-slate-400 text-lg">{item.moi}</span>
                     </div>
                   </div>
-
+                  <CardDescription className="text-blue-50/50">
+                    {item.description}
+                  </CardDescription>
                   {/* Divider */}
                   <div className="h-px bg-linear-to-r from-transparent via-blue-400/30 to-transparent mb-6" />
 
@@ -280,7 +282,7 @@ const pack: PackItem[] = [
         {/* Marketing Content */}
         <div className="  border-t border-border pt-16">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 text-foreground text-balance">
-          hoose Your Growth Plan
+          Choose Your Growth Plan
 Select the monthly subscription that fits your scaling goals. No hidden fees. Cancel anytime.
 
           </h2>
