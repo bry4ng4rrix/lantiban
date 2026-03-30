@@ -32,7 +32,7 @@ export default function Home() {
 
     const getTotalPrice = () => {
         return cartItems.reduce((total: number, item: PackItem) => {
-            const price = item.price.replace(/[^\d]/g, '');
+            const price = item.price;
             return total + parseInt(price, 10);
         }, 0);
     };
@@ -41,7 +41,7 @@ export default function Home() {
         const message = `hello , new order details :\n\n` +
             cartItems.map((item, index) => 
                 `type : ${item.title}\n` +
-                `price : ${item.price}\n`
+                `price : ${item.price}\n €`
             ).join('\n');
         
         const whatsappUrl = `https://wa.me/33623126517?text=${encodeURIComponent(message)}`;
@@ -51,26 +51,32 @@ export default function Home() {
 
     const pack = [
         {
-             title: "Starter",
+             title: "STARTER",
+             type : "PLAN",
              image: "google.webp",
-             price: "350",
+             price: 350,
+             moi : "",
              badge: "Popular",
              color: 'primary',
              star: 3
          },
         
          {
-             title: "Premium",
+             title: "SCALING",
+             type : "PLAN",
              image: "google.webp",
-             price: "1000/mois",
+             price: 1000,
+             moi : "/mois",
              badge: "Best Value",
              color: 'green-500',
              star: 5
          },
         {
-            title: "Pro",
+            title: "DOMINATOR",
+            type : "TIER",
             image: "google.webp",
-            price: "500/mois",
+            price: 500,
+             moi : "/mois",
             badge: "Professional",
             color: 'primary',
             star: 4
@@ -155,11 +161,11 @@ export default function Home() {
      <section className="py-24 md:py-32 px-4 md:px-8 ">
       <div className="max-w-6xl mx-auto">
         {/* Banner Image */}
-        <div className="w-full mb-16">
+        <div className="w-full mb-10">
           <Image
             src="/banner.jpg"
             alt="Ad Image Creation Banner"
-            className="w-full h-64 md:h-96 object-fit rounded-2xl shadow-lg"
+            className="w-full h-64 md:h-96 object-fit rounded-2xl shadow-md"
             width={1200}
             height={600}
             loading="eager"
@@ -176,14 +182,43 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+         {pack.map((i,index) => (
+           <Card  
+           key={index}
+           className="flex justify-between space-y-2 bg-linear-to-t from-slate-900 to-blue-900 text-white">
+            <CardHeader>
+                      <div className="text-center">
+                        <h1 className="font-bold text-xl">THE</h1>
+                        <h1 className="text-5xl font-bold text-amber-400">{i.title}</h1>
+                        <h1 className="text-xl font-bold">{i.type}</h1>
+                      </div>
+            </CardHeader>
+            <CardContent className="h-10 justify-center items-center flex  ">
+            <div className="text-3xl">€ <span className="text-4xl text-yellow-400">{i.price}</span>{i.moi}</div>
+            </CardContent>
+            <CardDescription>
+              aaa
+            </CardDescription>
+            <CardFooter className="border-none items-center  bg-transparent"> 
+                      <Button
+                    size="lg"
+                    className='w-full rounded-lg font-semibold'
+                    onClick={() => addToCart(i)}
+                  >
+                    <ShoppingCart size={18} className='mr-2' />
+                    Add to Cart
+                  </Button>
+            </CardFooter>
+          </Card>
+         ))}
 
          
-        {pack.map((i, index) => ( 
+        {/* {pack.map((i, index) => ( 
             <Card
                 key={index}
                 className='group rounded-xl overflow-hidden border border-border shadow-md hover:border-primary hover:shadow-lg transition-all duration-300 bg-card hover:scale-105'
               >
-                {/* Image Container */}
+                {/* Image Container 
                 <div className='relative w-full h-56 bg-muted overflow-hidden'>
                   <img
                     src={i.image}
@@ -197,7 +232,7 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Content */}
+                {/* Content 
                 <CardContent className='pt-6 pb-0'>
                   <h3 className='text-2xl font-bold text-foreground mb-3'>
                     {i.title}
@@ -206,7 +241,7 @@ export default function Home() {
                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A, asperiores?
                   </p>
 
-                  {/* Rating */}
+                  {/* Rating 
                   <div className="flex items-center gap-1 mb-6">
                     {[...Array(5)].map((_, idx) => (
                       <Star 
@@ -222,7 +257,7 @@ export default function Home() {
                   
                 </CardContent>
 
-                {/* Footer */}
+                {/* Footer 
                 <CardFooter className='flex flex-col gap-4 pt-6 border-t border-border'>
                   <div className='w-full'>
                     <p className='text-sm text-muted-foreground mb-1'>Starting at</p>
@@ -230,7 +265,7 @@ export default function Home() {
                        €{i.price}
                     </p>
                   </div>
-                  {/* Add to cart */}
+                  {/* Add to cart 
                   <Button
                     size="lg"
                     className='w-full rounded-lg font-semibold'
@@ -239,12 +274,12 @@ export default function Home() {
                     <ShoppingCart size={18} className='mr-2' />
                     Add to Cart
                   </Button>
-                  {/* end add to cart */}
+                   end add to cart 
                 </CardFooter>
               </Card>
           
         ))}
-         
+          */}
 
           
          
