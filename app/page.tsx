@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardContent, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { ArrowDown,ArrowRight,ShoppingCart, Star, X ,Trash2} from "lucide-react";
+import { ArrowDown,ArrowRight,ShoppingCart, Star,Trash2} from "lucide-react";
 import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 
@@ -110,7 +110,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full bg-background">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 px-4 md:px-8 border-b border-border">
+      <section className="relative py-24 md:py-32 px-4 md:px-8 border border-border  ">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="md:w-1/2 flex flex-col justify-center">
             <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-foreground text-balance">
@@ -122,9 +122,9 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-3 w-fit">
               <Button 
                 size="lg"
-                className="rounded-lg font-semibold"
+                className="rounded-lg font-semibold hover:shadow-lg shadow-sm hover:scale-105"
               >
-                Get Started <ArrowRight className="w-4 h-4 ml-2" />
+                Get Started <ArrowDown className="w-4 h-4 ml-2" />
               </Button>
             </div>
           </div>
@@ -152,7 +152,7 @@ export default function Home() {
     
 
       {/* Offers Section */}
-     <section className="py-24 md:py-32 px-4 md:px-8 bg-background">
+     <section className="py-24 md:py-32 px-4 md:px-8 ">
       <div className="max-w-6xl mx-auto">
         {/* Banner Image */}
         <div className="w-full mb-16">
@@ -262,7 +262,7 @@ export default function Home() {
         </div>
 
         {/* Why Choose Section */}
-        <div className="mb-24">
+        <div className="">
       {/* Header */}
       <div className="text-center mb-16 space-y-4">
         <Badge variant="outline" className="text-sm px-4 py-1 bg-yellow-200 text-yellow-800">
@@ -281,7 +281,6 @@ export default function Home() {
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
-        {/* Card 1 */}
       {Chose.map((i, index) => (
         <Card key={index} className="space-y-2">
           <CardHeader>
@@ -313,7 +312,7 @@ export default function Home() {
     {/* Final CTA Section */}
     <section className="py-24 md:py-32 px-4 md:px-8 bg-primary/5 border-b border-border">
       <div className="max-w-4xl mx-auto">
-        <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-12 md:p-16 text-center">
+        <div className="bg-linear-to-br from-primary to-primary/80 rounded-2xl p-12 md:p-16 text-center">
           <h3 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6 text-balance">
             Stop Guessing. Start Scaling.
           </h3>
@@ -344,22 +343,22 @@ export default function Home() {
     </div>
 
       {/* WhatsApp CTA */}
-      <section className="py-16 px-4 md:px-8 bg-secondary/10 border-b border-border">
+      <section className="py-16 px-4 md:px-8 bg-green-200">
         <div className="max-w-3xl mx-auto">
-          <div className="bg-card rounded-2xl p-8 md:p-12 border border-border shadow-sm">
+          <div className="bg-green-400 border-none rounded-2xl p-8 md:p-12 border border-border shadow-sm">
             <div className="text-center">
-              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
+              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6  shadow-lg">
                 <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
                 </svg>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">Contact us via WhatsApp!</h2>
-              <p className="text-lg text-muted-foreground mb-8">Chat with our team to find the perfect solution</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 text-green-50">Contact us via WhatsApp!</h2>
+              <p className="text-lg text-muted mb-8">Chat with our team to find the perfect solution</p>
               <a
                 href="https://wa.me/33623126517"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center bg-accent text-accent-foreground font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition duration-300 shadow-sm hover:shadow-md"
+                className="inline-flex items-center bg-accent text-accent-foreground font-semibold px-8 py-3  rounded-lg hover:opacity-90 transition duration-300 shadow-lg hover:scale-105 hover:shadow-md"
               >
                 <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
