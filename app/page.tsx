@@ -9,12 +9,15 @@ import { useState } from "react";
 import { Separator } from "@/components/ui/separator";
 
 interface PackItem {
-    title: string;
-    image: string;
-    price: string;
-    badge: string;
-    color: string;
-    star: number;
+  id: number;
+  image: string;
+  title: string;
+  type: string;
+  price: number;
+  moi: string;
+  description: string;
+  features: string[];
+  popular?: boolean;
 }
 
 export default function Home() {
@@ -49,39 +52,41 @@ export default function Home() {
         setIsCartOpen(false);
     };
 
-    const pack = [
-        {
-             title: "STARTER",
-             type : "PLAN",
-             image: "google.webp",
-             price: 350,
-             moi : "",
-             badge: "Popular",
-             color: 'primary',
-             star: 3
-         },
-        
-         {
-             title: "SCALING",
-             type : "PLAN",
-             image: "google.webp",
-             price: 1000,
-             moi : "/mois",
-             badge: "Best Value",
-             color: 'green-500',
-             star: 5
-         },
-        {
-            title: "DOMINATOR",
-            type : "TIER",
-            image: "google.webp",
-            price: 500,
-             moi : "/mois",
-            badge: "Professional",
-            color: 'primary',
-            star: 4
-        },
-    ]
+const pack: PackItem[] = [
+  {
+    id: 1,
+    image: '🚀',
+    title: 'STARTER',
+    type: 'PACK',
+    price: 350,
+    moi: '/mo',
+    description: 'Perfect for testing',
+    features: ['Perfect for Testing', 'Cancel Anytime'],
+    popular: false
+  },
+  {
+    id: 2,
+    image: '🚀',
+    title: 'SCALING',
+    type: 'PLAN',
+    price: 500,
+    moi: '/mo',
+    description: 'Built to scale',
+    features: ['Built to Scale', 'Priority Delivery', 'Cancel Anytime'],
+    popular: true
+  },
+  {
+    id: 3,
+    image: '👑',
+    title: 'DOMINATOR',
+    type: 'TIER',
+    price: 1000,
+    moi: '/mo',
+    description: 'Aggressive scaling',
+    features: ['Aggressive Scaling', 'VIP Priority Delivery', 'Cancel Anytime'],
+    popular: false
+  }
+];
 
     const Chose = [
       {
@@ -130,7 +135,7 @@ export default function Home() {
                 size="lg"
                 className="rounded-lg font-semibold hover:shadow-lg shadow-sm hover:scale-105"
               >
-                Get Started <ArrowDown className="w-4 h-4 ml-2" />
+               <a href="#produit" className="flex justify-center items-center text-lg"> Get Started <ArrowDown className="w-4 h-4 ml-2" /></a>
               </Button>
             </div>
           </div>
@@ -181,105 +186,97 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-         {pack.map((i,index) => (
-           <Card  
-           key={index}
-           className="flex justify-between space-y-2 bg-linear-to-t from-slate-900 to-blue-900 text-white">
-            <CardHeader>
-                      <div className="text-center">
-                        <h1 className="font-bold text-xl">THE</h1>
-                        <h1 className="text-5xl font-bold text-amber-400">{i.title}</h1>
-                        <h1 className="text-xl font-bold">{i.type}</h1>
-                      </div>
-            </CardHeader>
-            <CardContent className="h-10 justify-center items-center flex  ">
-            <div className="text-3xl">€ <span className="text-4xl text-yellow-400">{i.price}</span>{i.moi}</div>
-            </CardContent>
-            <CardDescription>
-              aaa
-            </CardDescription>
-            <CardFooter className="border-none items-center  bg-transparent"> 
-                      <Button
-                    size="lg"
-                    className='w-full rounded-lg font-semibold'
-                    onClick={() => addToCart(i)}
-                  >
-                    <ShoppingCart size={18} className='mr-2' />
-                    Add to Cart
-                  </Button>
-            </CardFooter>
-          </Card>
-         ))}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 " id="produit">
+          {pack.map((item, index) => (
+            <div key={index} className="relative group h-full">
+              {/* Popular Badge */}
+              {item.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
+                  <Badge className="bg-linear-to-r from-amber-400 to-amber-500 text-slate-950 px-4 py-1.5 font-bold text-sm">
+                    MOST POPULAR 🔥
+                  </Badge>
+                </div>
+              )}
 
-         
-        {/* {pack.map((i, index) => ( 
-            <Card
-                key={index}
-                className='group rounded-xl overflow-hidden border border-border shadow-md hover:border-primary hover:shadow-lg transition-all duration-300 bg-card hover:scale-105'
+              {/* Card Container */}
+              <div
+                className={`relative h-full rounded-2xl overflow-hidden transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl ${
+                  item.popular
+                    ? 'border-2 border-amber-400 bg-linear-to-br from-blue-950 to-slate-900 shadow-lg shadow-amber-400/20'
+                    : 'border-2 border-blue-500/50 bg-linear-to-br from-blue-950/80 to-slate-900/80 hover:border-blue-400'
+                }`}
               >
-                {/* Image Container 
-                <div className='relative w-full h-56 bg-muted overflow-hidden'>
-                  <img
-                    src={i.image}
-                    alt={i.title}
-                    className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-300'
-                  />
-                  <div className='absolute top-4 right-4 z-10'>
-                    <Badge className='bg-accent text-accent-foreground rounded-full font-semibold'>
-                      {i.badge}
-                    </Badge>
-                  </div>
+                {/* Icon with rotation */}
+                <div className="absolute -right-6 -top-6 text-7xl opacity-30 transform group-hover:rotate-12 transition-transform duration-500">
+                  {item.image}
                 </div>
 
-                {/* Content 
-                <CardContent className='pt-6 pb-0'>
-                  <h3 className='text-2xl font-bold text-foreground mb-3'>
-                    {i.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                   Lorem ipsum dolor sit amet consectetur adipisicing elit. A, asperiores?
-                  </p>
-
-                  {/* Rating 
-                  <div className="flex items-center gap-1 mb-6">
-                    {[...Array(5)].map((_, idx) => (
-                      <Star 
-                        key={idx}
-                        className={`w-4 h-4 ${
-                          idx < i.star 
-                            ? `text-accent fill-current` 
-                            : 'text-border'
-                        }`}
-                      />
-                    ))}
-                  </div> 
-                  
-                </CardContent>
-
-                {/* Footer 
-                <CardFooter className='flex flex-col gap-4 pt-6 border-t border-border'>
-                  <div className='w-full'>
-                    <p className='text-sm text-muted-foreground mb-1'>Starting at</p>
-                    <p className='text-3xl font-bold text-foreground'>
-                       €{i.price}
+                {/* Content */}
+                <div className="relative z-10 p-8 flex flex-col h-full">
+                  {/* Title Section */}
+                  <div className="text-center mb-8">
+                    <p className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">
+                      THE
+                    </p>
+                    <h2 className="text-4xl font-bold text-amber-400 mb-2">
+                      {item.title}
+                    </h2>
+                    <p className="text-lg font-semibold text-white">
+                      {item.type}
                     </p>
                   </div>
-                  {/* Add to cart 
+
+                  {/* Price Section */}
+                  <div className="mb-8 text-center">
+                    <div className="flex items-baseline justify-center gap-1">
+                      <span className="text-slate-300">€</span>
+                      <span className="text-5xl font-bold text-amber-400">
+                        {item.price}
+                      </span>
+                      <span className="text-slate-400 text-lg">{item.moi}</span>
+                    </div>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="h-px bg-linear-to-r from-transparent via-blue-400/30 to-transparent mb-6" />
+
+                  {/* Features */}
+                  <div className="flex-1 mb-8">
+                    <ul className="space-y-3">
+                      {item.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center gap-3">
+                          <span className="w-2 h-2 rounded-full bg-amber-400 shrink-0" />
+                          <span className="text-slate-200 font-medium">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Button */}
                   <Button
-                    size="lg"
-                    className='w-full rounded-lg font-semibold'
-                    onClick={() => addToCart(i)}
+                    onClick={() => addToCart(item)}
+                    className={`w-full py-6 rounded-lg font-bold text-lg transition-all duration-300 flex items-center justify-center gap-2 ${
+                      item.popular
+                        ? 'bg-linear-to-r from-amber-400 to-amber-500 text-slate-950 hover:shadow-lg hover:shadow-amber-400/50'
+                        : 'bg-blue-600 text-white hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-400/30'
+                    }`}
                   >
-                    <ShoppingCart size={18} className='mr-2' />
+                    <ShoppingCart size={20} />
                     Add to Cart
                   </Button>
-                   end add to cart 
-                </CardFooter>
-              </Card>
-          
-        ))}
-          */}
+                </div>
+
+                {/* Glow effect for popular */}
+                {item.popular && (
+                  <div className="absolute inset-0 bg-linear-to-br from-amber-400/10 to-transparent pointer-events-none rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                )}
+              </div>
+            </div>
+          ))}
+         
+     
 
           
          
@@ -314,24 +311,24 @@ export default function Home() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         
       {Chose.map((i, index) => (
-        <Card key={index} className="space-y-2">
+        <Card key={index} className="space-y-2 shadow-md border border-dashed">
           <CardHeader>
             <CardTitle className="text-center text-4xl">{i.emoji}</CardTitle>
            
           </CardHeader>
           <CardContent className="h-20 space-y-2">
              <div className="flex justify-between items-center">
-              <h1 className="font-semibold text-md">{i.titre}</h1> <Badge className="bg-green-400"> {i.badge}</Badge>
+              <h1 className="font-bold text-md">{i.titre}</h1> <Badge className="bg-green-400 text-white"> {i.badge}</Badge>
              </div>
            <CardDescription>
             {i.descri}
            </CardDescription>
           </CardContent>
           <CardFooter className="justify-center">
-            <Button>Learn more</Button>
+            <Button className="hover:scale-105 shadow-md hover:shadow-md"><a href="#contact">Learn more</a></Button>
           </CardFooter>
         </Card>
        
@@ -378,7 +375,7 @@ export default function Home() {
     </div>
 
       {/* WhatsApp CTA */}
-      <section className="py-16 px-4 md:px-8 bg-green-200">
+      <section className="py-16 px-4 md:px-8 bg-green-200" id="contact">
         <div className="max-w-3xl mx-auto">
           <div className="bg-green-400 border-none rounded-2xl p-8 md:p-12 border border-border shadow-sm">
             <div className="text-center">
