@@ -35,8 +35,7 @@ export default function Home() {
 
     const getTotalPrice = () => {
         return cartItems.reduce((total: number, item: PackItem) => {
-            const price = item.price;
-            return total + parseInt(price, 10);
+            return total + item.price;
         }, 0);
     };
 
@@ -460,9 +459,7 @@ const pack: PackItem[] = [
                     <div className="flex-1 min-w-0">
                       <h4 className="font-semibold text-foreground truncate">{item.title}</h4>
                       <div className="flex items-center gap-2 mt-2">
-                        <Badge variant="secondary" className="text-xs">
-                          {item.badge}
-                        </Badge>
+                        
                       </div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
