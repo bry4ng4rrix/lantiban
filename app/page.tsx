@@ -77,6 +77,34 @@ export default function Home() {
         },
     ]
 
+    const Chose = [
+      {
+        titre :"+60% Engagement",
+        badge : "Performance",
+        emoji : "🔥",
+        descri : "We build psychological triggers into every design to increase CTR, reduce CPC, and maximize ROI." ,      
+      },
+      {
+        titre : "100% Compliant",
+        badge : "Safe Ads",
+        emoji : "🛡️",
+        descri : "Fully aligned with Meta & TikTok policies to avoid rejections and bans." ,
+      },
+        {      
+        titre : "Full Flexibility",
+        badge : "No Lock-in",
+        emoji : "🔓",
+        descri : " Upgrade, downgrade, or cancel anytime. No contracts, no friction." ,
+      },
+      
+      {
+        titre : "Lightning Fast",
+        badge : "Speed",
+        emoji : "⚡",
+        descri : "Get your ads live in under 24 hours with our streamlined approval process." ,
+      },
+      
+    ]
 
 
   return (
@@ -237,8 +265,8 @@ export default function Home() {
         <div className="mb-24">
       {/* Header */}
       <div className="text-center mb-16 space-y-4">
-        <Badge variant="secondary" className="text-sm px-4 py-1">
-          Why Us
+        <Badge variant="outline" className="text-sm px-4 py-1 bg-yellow-200 text-yellow-800">
+          Why Us ? 
         </Badge>
 
         <h3 className="text-4xl md:text-5xl font-bold text-balance">
@@ -254,97 +282,27 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         
         {/* Card 1 */}
-        <Card className="group hover:shadow-xl transition-all duration-300 border-border/50">
-          <CardHeader className="space-y-4">
-            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-2xl group-hover:scale-110 transition">
-              🔥
-            </div>
-            <CardTitle>+60% Engagement</CardTitle>
-            <Badge variant="outline">Performance</Badge>
+      {Chose.map((i, index) => (
+        <Card key={index} className="space-y-2">
+          <CardHeader>
+            <CardTitle className="text-center text-4xl">{i.emoji}</CardTitle>
+           
           </CardHeader>
-
-          <CardContent>
-            <CardDescription className="text-sm leading-relaxed">
-              We build psychological triggers into every design to increase CTR,
-              reduce CPC, and maximize ROI.
-            </CardDescription>
+          <CardContent className="h-20 space-y-2">
+             <div className="flex justify-between items-center">
+              <h1 className="font-semibold text-md">{i.titre}</h1> <Badge className="bg-green-400"> {i.badge}</Badge>
+             </div>
+           <CardDescription>
+            {i.descri}
+           </CardDescription>
           </CardContent>
-
-          <CardFooter>
-            <Button variant="ghost" size="sm" className="w-full">
-              Learn more
-            </Button>
+          <CardFooter className="justify-center">
+            <Button>Learn more</Button>
           </CardFooter>
         </Card>
-
-        {/* Card 2 */}
-        <Card className="group hover:shadow-xl transition-all duration-300 border-border/50">
-          <CardHeader className="space-y-4">
-            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-2xl group-hover:scale-110 transition">
-              🛡️
-            </div>
-            <CardTitle>100% Compliant</CardTitle>
-            <Badge variant="outline">Safe Ads</Badge>
-          </CardHeader>
-
-          <CardContent>
-            <CardDescription className="text-sm leading-relaxed">
-              Fully aligned with Meta & TikTok policies to avoid rejections and bans.
-            </CardDescription>
-          </CardContent>
-
-          <CardFooter>
-            <Button variant="ghost" size="sm" className="w-full">
-              Learn more
-            </Button>
-          </CardFooter>
-        </Card>
-
-        {/* Card 3 */}
-        <Card className="group hover:shadow-xl transition-all duration-300 border-border/50">
-          <CardHeader className="space-y-4">
-            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-2xl group-hover:scale-110 transition">
-              🔓
-            </div>
-            <CardTitle>Full Flexibility</CardTitle>
-            <Badge variant="outline">No Lock-in</Badge>
-          </CardHeader>
-
-          <CardContent>
-            <CardDescription className="text-sm leading-relaxed">
-              Upgrade, downgrade, or cancel anytime. No contracts, no friction.
-            </CardDescription>
-          </CardContent>
-
-          <CardFooter>
-            <Button variant="ghost" size="sm" className="w-full">
-              Learn more
-            </Button>
-          </CardFooter>
-        </Card>
-
-        {/* Card 4 */}
-        <Card className="group hover:shadow-xl transition-all duration-300 border-border/50">
-          <CardHeader className="space-y-4">
-            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-2xl group-hover:scale-110 transition">
-              ⚡
-            </div>
-            <CardTitle>Ready to Launch</CardTitle>
-            <Badge variant="outline">Fast Delivery</Badge>
-          </CardHeader>
-
-          <CardContent>
-            <CardDescription className="text-sm leading-relaxed">
-              Get high-quality creatives delivered fast, ready for immediate campaigns.
-            </CardDescription>
-          </CardContent>
-
-          <CardFooter>
-            <Button variant="ghost" size="sm" className="w-full">
-              Learn more
-            </Button>
-          </CardFooter>
-        </Card>
+       
+      ))}
+      
 
       </div>
     </div>
@@ -378,7 +336,7 @@ export default function Home() {
         <Image
           src="/second.jpg"
           alt="Portfolio showcase"
-          className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-lg"
+          className="w-full h-64 md:h-96 object-fit rounded-2xl shadow-lg"
           width={1200}
           height={600}
         />
@@ -419,11 +377,12 @@ export default function Home() {
       <DialogTrigger asChild>
         <Button
           size="lg"
-          className="fixed bottom-8 right-8 z-50 h-14 w-14 rounded-full bg-accent text-accent-foreground shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center"
+          className="fixed bottom-8 right-8 z-50 h-14 w-14 rounded-full bg-green-500 text-background shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center"
         >
           <ShoppingCart size={20} />
           {cartItems.length > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center bg-destructive text-destructive-foreground animate-pulse font-semibold text-xs">
+            <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center 
+              bg-destructive text-destructive-foreground animate-pulse font-semibold text-xs">
               {cartItems.length}
             </Badge>
           )}
