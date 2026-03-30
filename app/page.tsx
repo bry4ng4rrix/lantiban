@@ -59,8 +59,8 @@ const pack: PackItem[] = [
     type: 'PACK',
     price: 350,
     moi: '/mo',
-    description: 'Perfect for testing',
-    features: ['Perfect for Testing', 'Cancel Anytime'],
+    description: 'The Starter Pack Perfect for testing new offers and finding winning angles.',
+    features: ['10 Premium Static Creatives per month', '100% Platform Compliant (0 Risk of Bans)','Optimized for +60% Engagement Rate','Cancel Anytime'],
     popular: false
   },
   {
@@ -70,8 +70,8 @@ const pack: PackItem[] = [
     type: 'PLAN',
     price: 500,
     moi: '/mo',
-    description: 'Built to scale',
-    features: ['Built to Scale', 'Priority Delivery', 'Cancel Anytime'],
+    description: 'Built for growing brands that need constant fresh creatives to beat ad fatigue.',
+    features: ['50 Premium Static Creatives per month', '100% Platform Compliant (0 Risk of Bans)','Optimized for +60% Engagement Rate','Priority Delivery','Cancel Anytime'],
     popular: true
   },
   {
@@ -81,37 +81,37 @@ const pack: PackItem[] = [
     type: 'TIER',
     price: 1000,
     moi: '/mo',
-    description: 'Aggressive scaling',
-    features: ['Aggressive Scaling', 'VIP Priority Delivery', 'Cancel Anytime'],
+    description: 'The Dominator Tier For aggressive scaling and multi-platform domination. Never run out of winning ads again.',
+    features: ['100 Premium Static Creatives per month', '100% Platform Compliant (0 Risk of Bans)','Optimized for +60% Engagement Rate','VIP Priority Delivery','Cancel Anytime'],
     popular: false
   }
 ];
 
     const Chose = [
       {
-        titre :"+60% Engagement",
+        titre :"+60% Average Engagement Rate",
         badge : "Performance",
         emoji : "🔥",
-        descri : "We build psychological triggers into every design to increase CTR, reduce CPC, and maximize ROI." ,      
+        descri : "We don't just make pretty pictures. We build psychological triggers into every design. Our creatives are proven to boost click-through rates, lower your CPC, and skyrocket your ROI." ,      
       },
       {
-        titre : "100% Compliant",
+        titre : "100% Ban-Proof & Platform Compliant",
         badge : "Safe Ads",
         emoji : "🛡️",
-        descri : "Fully aligned with Meta & TikTok policies to avoid rejections and bans." ,
+        descri : "ired of Meta or TikTok rejecting your ads? We know the algorithms and the rulebooks inside out. Our designs strictly respect all advertising policies and terms of service. 0 risk of blockages, 100% peace of mind." ,
       },
         {      
-        titre : "Full Flexibility",
+        titre : "Ultimate Flexibility (Cancel Anytime)",
         badge : "No Lock-in",
         emoji : "🔓",
-        descri : " Upgrade, downgrade, or cancel anytime. No contracts, no friction." ,
+        descri : " We believe in earning your business every single month. There are absolutely no lock-in contracts. Upgrade, downgrade, or cancel your subscription with a single click." ,
       },
       
       {
-        titre : "Lightning Fast",
+        titre : "Ready to Launch",
         badge : "Speed",
         emoji : "⚡",
-        descri : "Get your ads live in under 24 hours with our streamlined approval process." ,
+        descri : "Stop waiting weeks for freelancers. Get a steady stream of fresh, agency-quality creatives delivered directly to you, ready to be plugged straight into your campaigns" ,
       },
       
     ]
@@ -120,14 +120,15 @@ const pack: PackItem[] = [
   return (
     <div className="min-h-screen w-full bg-background">
       {/* Hero Section */}
-      <section className="relative py-24 md:py-32 px-4 md:px-8 border border-border  ">
+      <section className="relative py-10 md:py-20 px-4 md:px-8 border border-border  ">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="md:w-1/2 flex flex-col justify-center">
             <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-foreground text-balance">
               Boost Your Online Visibility!
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-lg">
-              Effective Marketing Solutions for Your Business
+             Dominate Your Market with High-Converting Ad Creatives
+                Stop wasting ad spend on visuals that get ignored—or worse, get your accounts banned. At Lantiban, we design premium, scroll-stopping static ads engineered to scale your business and crush your CPA.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 w-fit">
               <Button 
@@ -318,7 +319,7 @@ const pack: PackItem[] = [
             <CardTitle className="text-center text-4xl">{i.emoji}</CardTitle>
            
           </CardHeader>
-          <CardContent className="h-24 space-y-2">
+          <CardContent className="h-36 space-y-2">
              <div className="flex justify-between items-center">
               <h1 className="font-bold text-md">{i.titre}</h1> <Badge className="bg-green-400 text-white"> {i.badge}</Badge>
              </div>
