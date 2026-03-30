@@ -313,7 +313,7 @@ const pack: PackItem[] = [
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         
       {Chose.map((i, index) => (
-        <Card key={index} className="space-y-2 shadow-md border border-dashed">
+        <Card key={index} className="space-y-2 shadow-md border border-dashed hover:scale-105 hover:shadow-2xl">
           <CardHeader>
             <CardTitle className="text-center text-4xl">{i.emoji}</CardTitle>
            
