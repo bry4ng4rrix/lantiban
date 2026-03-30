@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button"
-import { Card , CardContent, CardFooter} from "@/components/ui/card"
+import { Card, CardHeader, CardContent, CardTitle, CardDescription, CardFooter } from "@/components/ui/card"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { ArrowDown,ArrowRight,ShoppingCart, Star, X ,Trash2} from "lucide-react";
 import { useState } from "react";
@@ -38,7 +38,7 @@ export default function Home() {
     };
 
     const sendToWhatsApp = () => {
-        const message = `new order details :\n\n` +
+        const message = `hello , new order details :\n\n` +
             cartItems.map((item, index) => 
                 `type : ${item.title}\n` +
                 `price : ${item.price}\n`
@@ -80,34 +80,38 @@ export default function Home() {
 
 
   return (
-    <div className="min-h-screen w-full h-full bg-white">
+    <div className="min-h-screen w-full bg-background">
       {/* Hero Section */}
-      <section className="relative  py-20 ">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between">
-          <div className="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4 text-sky-500">
+      <section className="relative py-24 md:py-32 px-4 md:px-8 border-b border-border">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="md:w-1/2 flex flex-col justify-center">
+            <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-foreground text-balance">
               Boost Your Online Visibility!
             </h1>
-            <p className="text-xl md:text-2xl mb-6">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-lg">
               Effective Marketing Solutions for Your Business
             </p>
-            <Button 
-            size="lg"
-            className="rounded-lg"
-            >Get Started <ArrowDown className=""/> </Button>
+            <div className="flex flex-col sm:flex-row gap-3 w-fit">
+              <Button 
+                size="lg"
+                className="rounded-lg font-semibold"
+              >
+                Get Started <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
           </div>
-          <div className="md:w-1/2 flex justify-center md:justify-end relative">
+          <div className="md:w-1/2 flex justify-center md:justify-end relative h-96">
             {/* Products images */}
             <Image
               src="/bm.webp"
-              alt="Caméra de surveillance"
+              alt="lantiban google"
               className="absolute top-0 right-0 w-48 md:w-64 lg:w-80 -mt-10 md:-mt-20 transform rotate-6 hover:scale-105 transition-all duration-300 animate-floatY"
               width={300}
               height={300}
             />
              <Image
               src="/google.webp"
-              alt="Montre connectée"
+              alt="Lantiban fb"
               className="absolute bottom-0 left-0 w-32 md:w-48 lg:w-60 -mb-10 md:-mb-20 transform -rotate-6 hover:scale-105 transition-all duration-300 animate-floatY"
               width={300}
               height={300}
@@ -120,64 +124,69 @@ export default function Home() {
     
 
       {/* Offers Section */}
-     <section className="mt-3 py-20 px-4 md:px-8 bg-linear-to-b via-sky-50 to-green-200">
+     <section className="py-24 md:py-32 px-4 md:px-8 bg-background">
       <div className="max-w-6xl mx-auto">
+        {/* Banner Image */}
+        <div className="w-full mb-16">
+          <Image
+            src="/banner.jpg"
+            alt="Ad Image Creation Banner"
+            className="w-full h-64 md:h-96 object-fit rounded-2xl shadow-lg"
+            width={1200}
+            height={600}
+            loading="eager"
+            priority
+          />
+        </div>
+        <div className="mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-foreground text-balance">
+            Ad Image Creation
+          </h2>
+          <p className="text-center text-lg text-muted-foreground max-w-2xl mx-auto">
+            Choose the creative firepower you need. Pause or cancel whenever you want. No contracts, no headaches—just results.
+          </p>
+        </div>
 
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-900">
-          Ad Image Creation
-        </h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
 
          
         {pack.map((i, index) => ( 
             <Card
                 key={index}
-                className='group rounded-lg overflow-hidden border-border shadow-lg 
-                hover:border-sky-500 hover:shadow-xl transition-all duration-300 bg-card/70 hover:scale-105 backdrop-blur-sm hover:bg-card'
+                className='group rounded-xl overflow-hidden border border-border shadow-md hover:border-primary hover:shadow-lg transition-all duration-300 bg-card hover:scale-105'
               >
                 {/* Image Container */}
-                <div className='relative w-full h-48 bg-muted overflow-hidden'>
+                <div className='relative w-full h-56 bg-muted overflow-hidden'>
                   <img
-                    // src={produit.image || "/placeholder.svg"}
                     src={i.image}
-                    
-                    className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
+                    alt={i.title}
+                    className='w-full h-full object-cover group-hover:scale-110 transition-transform duration-300'
                   />
-                  <Button className="w-full bg-blue-600 text-white hover:bg-blue-700 py-4 text-lg font-semibold rounded-xl transition-all duration-200 hover:shadow-lg flex items-center justify-center gap-2" onClick={sendToWhatsApp}>
-                    <ShoppingCart className="w-5 h-5" />
-                    Send Order via WhatsApp
-                  </Button>
-                  <div className='absolute top-3 right-3'>
-                    <Badge
-                    className={`rounded-full bg-${i.color}`}
-                    >{i.badge}</Badge>
+                  <div className='absolute top-4 right-4 z-10'>
+                    <Badge className='bg-accent text-accent-foreground rounded-full font-semibold'>
+                      {i.badge}
+                    </Badge>
                   </div>
                 </div>
 
                 {/* Content */}
-                <CardContent className='pt-4'>
-                  <div className='mb-2'>
-                   
-                    <h3 className='text-xl font-semibold text-foreground mt-1 line-clamp-2'>
-                     {i.title}
-                    </h3>
-                   
-                   
-                  </div>
-                  <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
+                <CardContent className='pt-6 pb-0'>
+                  <h3 className='text-2xl font-bold text-foreground mb-3'>
+                    {i.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                    Lorem ipsum dolor sit amet consectetur adipisicing elit. A, asperiores?
                   </p>
 
                   {/* Rating */}
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(5)].map((_, index) => (
+                  <div className="flex items-center gap-1 mb-6">
+                    {[...Array(5)].map((_, idx) => (
                       <Star 
-                        key={index}
+                        key={idx}
                         className={`w-4 h-4 ${
-                          index < i.star 
-                            ? `text-yellow-500 fill-current` 
-                            : 'text-gray-300'
+                          idx < i.star 
+                            ? `text-accent fill-current` 
+                            : 'text-border'
                         }`}
                       />
                     ))}
@@ -186,24 +195,20 @@ export default function Home() {
                 </CardContent>
 
                 {/* Footer */}
-                <CardFooter className='flex items-center justify-between pt-4 border-t border-border'>
-                  <div>
-                    <p className='text-2xl font-bold text-stone-800'>
+                <CardFooter className='flex flex-col gap-4 pt-6 border-t border-border'>
+                  <div className='w-full'>
+                    <p className='text-sm text-muted-foreground mb-1'>Starting at</p>
+                    <p className='text-3xl font-bold text-foreground'>
                        €{i.price}
                     </p>
-                   
                   </div>
                   {/* Add to cart */}
                   <Button
                     size="lg"
-                   
-                    className={`bg-${i.color} text-primary-foreground rounded hover:bg-${i.color} gap-2  hover:scale-105 hover:shadow-2xl
-                    translation-all duration-300
-                   
-                    shadow-lg `}
+                    className='w-full rounded-lg font-semibold'
                     onClick={() => addToCart(i)}
                   >
-                    <ShoppingCart size={16} />
+                    <ShoppingCart size={18} className='mr-2' />
                     Add to Cart
                   </Button>
                   {/* end add to cart */}
@@ -217,26 +222,194 @@ export default function Home() {
          
 
         </div>
+
+        {/* Marketing Content */}
+        <div className="mb-20 mt-16 border-t border-border pt-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-8 text-foreground text-balance">
+            Dominate Your Market with High-Converting Ad Creatives
+          </h2>
+          <p className="text-lg text-muted-foreground text-center mb-8 max-w-3xl mx-auto leading-relaxed">
+            Stop wasting ad spend on visuals that get ignored—or worse, get your accounts banned. At Lantiban, we design premium, scroll-stopping static ads engineered to scale your business and crush your CPA.
+          </p>
+        </div>
+
+        {/* Why Choose Section */}
+        <div className="mb-24">
+      {/* Header */}
+      <div className="text-center mb-16 space-y-4">
+        <Badge variant="secondary" className="text-sm px-4 py-1">
+          Why Us
+        </Badge>
+
+        <h3 className="text-4xl md:text-5xl font-bold text-balance">
+          Why Choose Lantiban?
+        </h3>
+
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          Not just design. Performance-driven creatives engineered to scale your campaigns.
+        </p>
+      </div>
+
+      {/* Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        {/* Card 1 */}
+        <Card className="group hover:shadow-xl transition-all duration-300 border-border/50">
+          <CardHeader className="space-y-4">
+            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-2xl group-hover:scale-110 transition">
+              🔥
+            </div>
+            <CardTitle>+60% Engagement</CardTitle>
+            <Badge variant="outline">Performance</Badge>
+          </CardHeader>
+
+          <CardContent>
+            <CardDescription className="text-sm leading-relaxed">
+              We build psychological triggers into every design to increase CTR,
+              reduce CPC, and maximize ROI.
+            </CardDescription>
+          </CardContent>
+
+          <CardFooter>
+            <Button variant="ghost" size="sm" className="w-full">
+              Learn more
+            </Button>
+          </CardFooter>
+        </Card>
+
+        {/* Card 2 */}
+        <Card className="group hover:shadow-xl transition-all duration-300 border-border/50">
+          <CardHeader className="space-y-4">
+            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-2xl group-hover:scale-110 transition">
+              🛡️
+            </div>
+            <CardTitle>100% Compliant</CardTitle>
+            <Badge variant="outline">Safe Ads</Badge>
+          </CardHeader>
+
+          <CardContent>
+            <CardDescription className="text-sm leading-relaxed">
+              Fully aligned with Meta & TikTok policies to avoid rejections and bans.
+            </CardDescription>
+          </CardContent>
+
+          <CardFooter>
+            <Button variant="ghost" size="sm" className="w-full">
+              Learn more
+            </Button>
+          </CardFooter>
+        </Card>
+
+        {/* Card 3 */}
+        <Card className="group hover:shadow-xl transition-all duration-300 border-border/50">
+          <CardHeader className="space-y-4">
+            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-2xl group-hover:scale-110 transition">
+              🔓
+            </div>
+            <CardTitle>Full Flexibility</CardTitle>
+            <Badge variant="outline">No Lock-in</Badge>
+          </CardHeader>
+
+          <CardContent>
+            <CardDescription className="text-sm leading-relaxed">
+              Upgrade, downgrade, or cancel anytime. No contracts, no friction.
+            </CardDescription>
+          </CardContent>
+
+          <CardFooter>
+            <Button variant="ghost" size="sm" className="w-full">
+              Learn more
+            </Button>
+          </CardFooter>
+        </Card>
+
+        {/* Card 4 */}
+        <Card className="group hover:shadow-xl transition-all duration-300 border-border/50">
+          <CardHeader className="space-y-4">
+            <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-2xl group-hover:scale-110 transition">
+              ⚡
+            </div>
+            <CardTitle>Ready to Launch</CardTitle>
+            <Badge variant="outline">Fast Delivery</Badge>
+          </CardHeader>
+
+          <CardContent>
+            <CardDescription className="text-sm leading-relaxed">
+              Get high-quality creatives delivered fast, ready for immediate campaigns.
+            </CardDescription>
+          </CardContent>
+
+          <CardFooter>
+            <Button variant="ghost" size="sm" className="w-full">
+              Learn more
+            </Button>
+          </CardFooter>
+        </Card>
+
+      </div>
+    </div>
+
       </div>
     </section>
-  
+
+    {/* Final CTA Section */}
+    <section className="py-24 md:py-32 px-4 md:px-8 bg-primary/5 border-b border-border">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-gradient-to-br from-primary to-primary/80 rounded-2xl p-12 md:p-16 text-center">
+          <h3 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6 text-balance">
+            Stop Guessing. Start Scaling.
+          </h3>
+          <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 leading-relaxed max-w-2xl mx-auto">
+            Your product deserves to be seen. Let our expert designers fuel your ad accounts with visuals that turn scrollers into buyers.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" variant="secondary" className="rounded-lg font-semibold">
+              Get Started Now
+            </Button>
+            <Button size="lg" variant="outline" className="rounded-lg font-semibold border-primary-foreground/20 hover:bg-primary-foreground/10">
+              Schedule a Call
+            </Button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div className="w-full px-4 md:px-8 py-12">
+      <div className="max-w-6xl mx-auto">
+        <Image
+          src="/second.jpg"
+          alt="Portfolio showcase"
+          className="w-full h-64 md:h-96 object-cover rounded-2xl shadow-lg"
+          width={1200}
+          height={600}
+        />
+      </div>
+    </div>
 
       {/* WhatsApp CTA */}
-      <section className="bg-green-200 text-green-950 py-12 ">
-        <div className="w-full text-center">
-          <h2 className="text-3xl font-bold mb-4">Contact us via WhatsApp!</h2>
-          <p className="text-xl mb-6">Chat with our team to find the perfect solution</p>
-          <a
-            href="https://wa.me/33623126517"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center bg-white text-green-700 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-green-50 transition duration-300"
-          >
-            <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-            Start Conversation
-          </a>
+      <section className="py-16 px-4 md:px-8 bg-secondary/10 border-b border-border">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-card rounded-2xl p-8 md:p-12 border border-border shadow-sm">
+            <div className="text-center">
+              <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">Contact us via WhatsApp!</h2>
+              <p className="text-lg text-muted-foreground mb-8">Chat with our team to find the perfect solution</p>
+              <a
+                href="https://wa.me/33623126517"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center bg-accent text-accent-foreground font-semibold px-8 py-3 rounded-lg hover:opacity-90 transition duration-300 shadow-sm hover:shadow-md"
+              >
+                <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.149-.67.149-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.123-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                </svg>
+                Start Conversation
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -246,27 +419,27 @@ export default function Home() {
       <DialogTrigger asChild>
         <Button
           size="lg"
-          className="fixed bottom-6 right-6 z-50 h-16 w-16 rounded-full bg-primary text-primary-foreground shadow-xl hover:opacity-90 transition-all duration-300 hover:scale-110 flex items-center justify-center"
+          className="fixed bottom-8 right-8 z-50 h-14 w-14 rounded-full bg-accent text-accent-foreground shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center"
         >
-          <ShoppingCart size={24} />
+          <ShoppingCart size={20} />
           {cartItems.length > 0 && (
-            <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center bg-destructive text-destructive-foreground animate-pulse">
+            <Badge className="absolute -top-2 -right-2 h-6 w-6 rounded-full p-0 flex items-center justify-center bg-destructive text-destructive-foreground animate-pulse font-semibold text-xs">
               {cartItems.length}
             </Badge>
           )}
         </Button>
       </DialogTrigger>
-      <DialogContent className="w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col">
+      <DialogContent className="w-full max-w-md max-h-[90vh] overflow-hidden flex flex-col border border-border">
         <DialogHeader className="pb-4">
-          <div className="flex  items-center justify-between gap-4">
+          <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-secondary rounded-lg">
-                <ShoppingCart className="w-5 h-5 text-secondary-foreground" />
+              <div className="p-2 bg-accent/10 rounded-lg">
+                <ShoppingCart className="w-5 h-5 text-accent" />
               </div>
-              <DialogTitle className="text-2xl font-bold">Shopping Cart</DialogTitle>
+              <DialogTitle className="text-2xl font-bold text-foreground">Shopping Cart</DialogTitle>
             </div>
             {cartItems.length > 0 && (
-              <Badge variant="secondary">
+              <Badge className="bg-accent text-accent-foreground">
                 {cartItems.length} item{cartItems.length !== 1 ? 's' : ''}
               </Badge>
             )}
@@ -289,21 +462,21 @@ export default function Home() {
           ) : (
             <div className="space-y-3 px-6">
               {cartItems.map((item, index) => (
-                <Card key={index} className="p-4 hover:shadow-md transition-shadow duration-200 group">
+                <Card key={index} className="p-4 border border-border hover:shadow-sm transition-all duration-200 group bg-card">
                   <div className="flex items-start gap-3">
-                    <div className="shrink-0 w-14 h-14 rounded-lg bg-muted flex items-center justify-center">
-                      <div className="w-6 h-6 rounded bg-primary/30"></div>
+                    <div className="shrink-0 w-14 h-14 rounded-lg bg-muted/50 flex items-center justify-center">
+                      <div className="w-6 h-6 rounded bg-accent/20"></div>
                     </div>
                     <div className="flex-1 min-w-0">
                       <h4 className="font-semibold text-foreground truncate">{item.title}</h4>
                       <div className="flex items-center gap-2 mt-2">
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="secondary" className="text-xs">
                           {item.badge}
                         </Badge>
                       </div>
                     </div>
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="font-bold text-lg text-foreground">£{item.price}</span>
+                      <span className="font-bold text-lg text-foreground">€{item.price}</span>
                       <Button
                         variant="ghost"
                         size="sm"
@@ -324,30 +497,30 @@ export default function Home() {
           <>
             <Separator className="my-4" />
             <div className="px-6 pb-6 space-y-4">
-              <div className="space-y-2">
+              <div className="space-y-2 bg-muted/50 rounded-lg p-3">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Subtotal</span>
-                  <span className="text-sm font-semibold">£{getTotalPrice()}</span>
+                  <span className="text-sm font-semibold text-foreground">€{getTotalPrice()}</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-muted-foreground">Shipping</span>
-                  <Badge variant="secondary" className="text-xs">Free</Badge>
+                  <Badge className="text-xs bg-accent/10 text-accent">Free</Badge>
                 </div>
               </div>
               <Separator />
-              <div className="flex items-center justify-between">
-                <span className="font-semibold">Total</span>
-                <span className="text-2xl font-bold">£{getTotalPrice()}</span>
+              <div className="flex items-center justify-between pt-2">
+                <span className="font-semibold text-foreground">Total</span>
+                <span className="text-3xl font-bold text-accent">€{getTotalPrice()}</span>
               </div>
 
               <div className="space-y-2 pt-2">
-                <Button className="w-full bg-blue-600 text-white hover:bg-blue-700 py-4 text-lg font-semibold rounded-xl transition-all duration-200 hover:shadow-lg flex items-center justify-center gap-2" size="lg" onClick={sendToWhatsApp}>
+                <Button className="w-full bg-accent text-accent-foreground hover:opacity-90 py-4 text-lg font-semibold rounded-lg transition-all duration-200 hover:shadow-lg flex items-center justify-center gap-2" size="lg" onClick={sendToWhatsApp}>
                   <ShoppingCart className="w-5 h-5" />
                   Send Order via WhatsApp
                 </Button>
                 <Button
                   variant="outline"
-                  className="w-full"
+                  className="w-full rounded-lg font-semibold"
                   size="lg"
                   onClick={() => setIsCartOpen(false)}
                 >
