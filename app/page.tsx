@@ -120,7 +120,7 @@ const pack: PackItem[] = [
   return (
     <div className="min-h-screen w-full bg-background">
       {/* Hero Section */}
-      <section className="relative py-10 md:py-20 px-4 md:px-8 border border-border  ">
+      <section className="relative py-10 md:py-20 px-4 md:px-8   ">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="md:w-1/2 flex flex-col justify-center">
             <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6 text-foreground text-balance">
@@ -142,19 +142,13 @@ const pack: PackItem[] = [
           <div className="md:w-1/2 flex justify-center md:justify-end relative h-96">
             {/* Products images */}
             <Image
-              src="/bm.webp"
+              src="/antiban.jpg"
               alt="lantiban google"
-              className="absolute top-0 right-0 w-48 md:w-64 lg:w-80 -mt-10 md:-mt-20 transform rotate-6 hover:scale-105 transition-all duration-300 animate-floatY"
-              width={300}
-              height={300}
+              className="absolute   rounded-lg shadow-lg animate-floatY hover:scale-105 transition-all duration-300 "
+              width={500}
+              height={400}
             />
-             <Image
-              src="/google.webp"
-              alt="Lantiban fb"
-              className="absolute bottom-0 left-0 w-32 md:w-48 lg:w-60 -mb-10 md:-mb-20 transform -rotate-6 hover:scale-105 transition-all duration-300 animate-floatY"
-              width={300}
-              height={300}
-            /> 
+          
            
           </div>
         </div>
@@ -375,7 +369,7 @@ const pack: PackItem[] = [
     </div>
 
       {/* WhatsApp CTA */}
-      <section className="py-16 px-4 md:px-8 bg-green-200" id="contact">
+      <section className="py-16 px-4 md:px-8 " id="contact">
         <div className="max-w-3xl mx-auto">
           <div className="bg-green-400 border-none rounded-2xl p-8 md:p-12 border border-border shadow-sm">
             <div className="text-center">
