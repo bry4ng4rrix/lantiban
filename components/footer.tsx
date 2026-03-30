@@ -1,4 +1,4 @@
-
+import Link from "next/link"
 
 
 export default function Footer() {
@@ -21,9 +21,9 @@ export default function Footer() {
                     <div>
                         <h4 className="text-lg font-semibold mb-4">Legal</h4>
                         <ul className="space-y-2 text-gray-400">
-                            <li><a href="/legal" className="hover:text-white">Legal Notice</a></li>
-                            <li><a href="/terms" className="hover:text-white">Terms & Conditions</a></li>
-                            <li><a href="/privacy" className="hover:text-white">Privacy Policy</a></li>
+                            <li><Link href="/legal" className="hover:text-white">Legal Notice</Link></li>
+                            <li><Link href="/terms" className="hover:text-white">Terms & Conditions</Link></li>
+                            <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
                         </ul>
                     </div>
                 </div>
