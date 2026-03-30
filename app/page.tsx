@@ -176,7 +176,7 @@ const pack: PackItem[] = [
             priority
           />
         </div>
-        <div className="mb-16">
+        <div className="mb-16" id="produit">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-foreground text-balance">
             Ad Image Creation
           </h2>
@@ -185,7 +185,7 @@ const pack: PackItem[] = [
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 " id="produit">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 " >
           {pack.map((item, index) => (
             <div key={index} className="relative group h-full">
               {/* Popular Badge */}
