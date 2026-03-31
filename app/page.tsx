@@ -128,7 +128,7 @@ const pack: PackItem[] = [
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed max-w-lg">
              Dominate Your Market with High-Converting Ad Creatives
-                Stop wasting ad spend on visuals that get ignored—or worse, get your accounts banned. At Lantiban, we design premium, scroll-stopping static ads engineered to scale your business and crush your CPA.
+                Stop wasting ad spend on visuals that get ignored or worse, get your accounts banned. At Lantiban, we design premium, scroll-stopping static ads engineered to scale your business and crush your CPA.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 w-fit">
               <Button 
